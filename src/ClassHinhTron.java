@@ -47,7 +47,6 @@ public class ClassHinhTron {
         System.out.println(arr[vtMin].toString());
         System.out.println("Diện tích nhỏ nhất là: " + cvMin);
 
-
         // tính trung bình cộng chu vi
         double sum = arr[0].tinhChuVi();
         double trungbinh = 0;
@@ -62,9 +61,18 @@ public class ClassHinhTron {
         System.out.println("Trung bình cộng của tổng các chu vi là : " + trungbinh);
         // có bao nhiêu hình có chu vi lớn hơn tbc chu vi
         System.out.println("Có " +count+ " có chu vi lớn hơn TBC");
-        // sắp xếp theo bán kính tăng dần
-        for(int i = 0; i < n; i++){
-            System.out.println("ban kinh tang dan la: " + arr[i].toString());
+        // sắp xếp nổi bọt
+        for(int i = 0; i < n-1; i++){
+            for (int j = i+1; j<n; j++){
+                if (arr[i].r > arr[j].r){
+                    HinhTron h = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = h;
+                }
+            }
+        }
+        for (HinhTron ht : arr){
+            System.out.println(ht.toString());
         }
 
         scanner.close();
